@@ -9,5 +9,14 @@ namespace Byway.Domain.Entities
         //Navigation Property
         public ICollection<Course> PurchasedCourses { get; set; } = new List<Course>();
 
+        public AppUser(string firstName, string lastName, string userName, string email)
+        {
+            FirstName = firstName;
+            LastName = lastName;
+            UserName = userName;
+            Email = email;
+        }
+
+
     }
 }
