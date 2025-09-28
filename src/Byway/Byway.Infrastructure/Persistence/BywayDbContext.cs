@@ -1,4 +1,5 @@
 ﻿using Byway.Domain.Entities;
+using Byway.Domain.Enums;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -19,10 +20,29 @@ namespace Byway.Infrastructure.Persistence
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<IdentityRole>().HasData(
-                new IdentityRole { Name = "Admin", NormalizedName = "ADMIN" },
-                new IdentityRole { Name = "User", NormalizedName = "USER" }
-            );
+            builder.Entity<IdentityRole<Guid>>().HasData(
+            new IdentityRole<Guid>
+            {
+                Id = Guid.Parse("cfb238c0-3c51-4119-b324-b1150dd98bf8"), // fixed GUID
+                Name = UserRole.Admin.ToString(),
+                NormalizedName = UserRole.Admin.ToString().ToUpper()
+            },
+            new IdentityRole<Guid>
+            {
+                Id = Guid.Parse("b408abe1-762c-4af3-83ab-a6a0d9f8339c"), // fixed GUID
+                Name = UserRole.User.ToString(),
+                NormalizedName = UserRole.User.ToString().ToUpper()
+            }
+        );
+
+            //builder.Entity<AppUser>()
+            //.HasIndex(u => u.Email)
+            //.IsUnique();
+
+            //builder.Entity<AppUser>()
+            //.HasIndex(u => u.UserName)
+            //.IsUnique();
+
 
         }
     }
