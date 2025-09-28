@@ -35,13 +35,13 @@ namespace Byway.Infrastructure.Persistence
             }
         );
 
-            //builder.Entity<AppUser>()
-            //.HasIndex(u => u.Email)
-            //.IsUnique();
+            builder.Entity<AppUser>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
 
-            //builder.Entity<AppUser>()
-            //.HasIndex(u => u.UserName)
-            //.IsUnique();
+            builder.Entity<AppUser>()
+            .HasIndex(u => u.UserName)
+            .IsUnique();
 
 
         }
