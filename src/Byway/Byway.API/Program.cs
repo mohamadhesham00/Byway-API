@@ -6,6 +6,17 @@ using Byway.Infrastructure.Persistence;
 using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowFrontend",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173") // your React app URL
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        });
+});
 
 // Identity
 builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>()
@@ -23,6 +34,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+//Use CORS
+app.UseCors("AllowFrontend");
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
