@@ -14,17 +14,9 @@ namespace Byway.Application.Services
 
         public async Task<Result<string>> LoginAsync(LoginDto dto)
         {
-            AppUser? user;
+            AppUser? user = await _userManager.FindByNameAsync(dto.UserName);
             bool isEmail = false;
-            if (dto.UserNameOrEmail.Contains('@'))
-            {
-                isEmail = true;
-                user = await _userManager.FindByEmailAsync(dto.UserNameOrEmail);
-            }
-            else
-            {
-                user = await _userManager.FindByNameAsync(dto.UserNameOrEmail);
-            }
+
             var isValid = user == null ? false : await _userManager.CheckPasswordAsync(user, dto.Password);
             if (!isValid)
             {
