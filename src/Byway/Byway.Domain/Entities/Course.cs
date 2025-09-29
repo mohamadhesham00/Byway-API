@@ -15,6 +15,8 @@ namespace Byway.Domain.Entities
         public string Description { get; set; }
         public string Certification { get; set; }
         public ICollection<CourseContent> Contents { get; set; } = new List<CourseContent>();
+        // Navigation property: students who purchased this course
+        public ICollection<UserCourse> Purchases { get; set; } = new List<UserCourse>();
         //For Navigation
         public Category Category { get; set; }
         public Instructor Instructor { get; set; }

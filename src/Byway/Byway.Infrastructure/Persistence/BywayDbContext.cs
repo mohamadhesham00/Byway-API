@@ -43,6 +43,18 @@ namespace Byway.Infrastructure.Persistence
             .HasIndex(u => u.UserName)
             .IsUnique();
 
+            builder.Entity<UserCourse>()
+                .HasKey(uc => new { uc.UserId, uc.CourseId });
+
+            builder.Entity<UserCourse>()
+                .HasOne(uc => uc.User)
+                .WithMany(u => u.PurchasedCourses)
+                .HasForeignKey(uc => uc.UserId);
+
+            builder.Entity<UserCourse>()
+                .HasOne(uc => uc.Course)
+                .WithMany(c => c.Purchases)
+                .HasForeignKey(uc => uc.CourseId);
 
         }
     }
