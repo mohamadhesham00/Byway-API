@@ -6,6 +6,7 @@ namespace Byway.Application.DTOs.User
     {
         [Required]
         [RegularExpression(@"^[^@#\$]*$", ErrorMessage = "Username cannot contain @, #, or $.")]
+        [MaxLength(25, ErrorMessage = "Username cannot exceed 25 characters length")]
 
         public string UserName { get; set; }
 
