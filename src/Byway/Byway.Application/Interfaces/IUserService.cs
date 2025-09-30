@@ -1,4 +1,4 @@
-﻿using Byway.Application.Common;
+﻿using Byway.Application.Common.Models;
 using Byway.Application.DTOs.User;
 
 namespace Byway.Application.Interfaces

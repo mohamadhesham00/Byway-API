@@ -1,4 +1,4 @@
-﻿using Byway.Application.Common;
+﻿using Byway.Application.Common.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Byway.API.Controllers
