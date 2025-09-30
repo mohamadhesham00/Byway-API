@@ -1,4 +1,5 @@
-﻿using Byway.Application.Interfaces;
+﻿using Byway.Application.Common.Interfaces;
+using Byway.Application.Interfaces;
 using Byway.Domain.Interfaces;
 using Byway.Infrastructure.Persistence;
 using Byway.Infrastructure.Repositories;
@@ -6,6 +7,7 @@ using Byway.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+
 namespace Byway.Infrastructure
 {
     public static class DependencyInjection
@@ -26,6 +28,10 @@ namespace Byway.Infrastructure
             services.AddScoped<IInstructorRepo, InstructorRepo>();
             services.AddScoped<CategoryRepo, CategoryRepo>();
             services.AddScoped<ICourseContentRepo, CourseContentRepo>();
+
+            // CurrentUser Service
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
+
 
             return services;
         }

@@ -23,6 +23,9 @@ builder.Services.AddIdentity<AppUser, IdentityRole<Guid>>()
     .AddEntityFrameworkStores<BywayDbContext>()
     .AddDefaultTokenProviders();
 
+
+builder.Services.AddHttpContextAccessor();
+
 // Add services to the container.
 builder.Services
     .AddInfrastructure(builder.Configuration)
