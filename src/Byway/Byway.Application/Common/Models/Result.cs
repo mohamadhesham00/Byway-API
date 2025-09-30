@@ -1,4 +1,4 @@
-﻿namespace Byway.Application.Common
+﻿namespace Byway.Application.Common.Models
 {
     public class Result<T>
     {
@@ -29,14 +29,17 @@
         public bool IsSuccess { get; }
         public bool IsFailure => !IsSuccess;
         public string? Error { get; }
+        public int? Status { get; }
 
-        protected Result(bool isSuccess, string? error)
+
+        protected Result(bool isSuccess, string? error, int? status)
         {
             IsSuccess = isSuccess;
             Error = error;
+            Status = status;
         }
 
-        public static Result Success() => new Result(true, null);
-        public static Result Failure(string error) => new Result(false, error);
+        public static Result Success() => new(true, null, 200);
+        public static Result Failure(string error, int status) => new(false, error, status);
     }
 }
