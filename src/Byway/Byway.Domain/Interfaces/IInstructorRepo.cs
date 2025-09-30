@@ -8,6 +8,7 @@ namespace Byway.Domain.Interfaces
         IQueryable<Instructor> GetAll(CancellationToken cancellationToken = default);
         Task AddAsync(Instructor instructor, CancellationToken cancellationToken = default);
         Task UpdateAsync(Instructor instructor, CancellationToken cancellationToken = default);
+        Task<bool> HasCoursesAsync(Guid instructorId, CancellationToken cancellationToken = default);
         Task DeleteAsync(Instructor instructor, CancellationToken cancellationToken = default);
     }
 }

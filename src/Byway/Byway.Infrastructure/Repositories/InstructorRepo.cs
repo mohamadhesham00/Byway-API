@@ -1,6 +1,7 @@
 ﻿using Byway.Domain.Entities;
 using Byway.Domain.Interfaces;
 using Byway.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
 
 namespace Byway.Infrastructure.Repositories
 {
@@ -29,6 +30,11 @@ namespace Byway.Infrastructure.Repositories
         {
             return await _context.Instructors.FindAsync(id, cancellationToken);
 
+        }
+
+        public async Task<bool> HasCoursesAsync(Guid instructorId, CancellationToken cancellationToken = default)
+        {
+            return await _context.Courses.AnyAsync(course => course.InstructorId == instructorId, cancellationToken);
         }
 
         public async Task UpdateAsync(Instructor instructor, CancellationToken cancellationToken = default)

@@ -11,6 +11,7 @@ namespace Byway.Application
             //Services
             services.AddScoped<ICourseService, CourseService>();
             services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IInstructorService, InstructorService>();
 
             return services;
         }
