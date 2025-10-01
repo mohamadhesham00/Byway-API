@@ -1,8 +1,8 @@
 ﻿namespace Byway.Domain.Enums
 {
-    public enum UserRole
+    public static class UserRole
     {
-        Admin,
-        User
+        public const string Admin = "Admin";
+        public const string User = "User";
     }
 }
