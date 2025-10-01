@@ -28,14 +28,14 @@
     {
         public bool IsSuccess { get; }
         public bool IsFailure => !IsSuccess;
-        public string? Error { get; }
+        public string? ErrorMessage { get; }
         public int? Status { get; }
 
 
-        protected Result(bool isSuccess, string? error, int? status)
+        protected Result(bool isSuccess, string? errorMessage, int? status)
         {
             IsSuccess = isSuccess;
-            Error = error;
+            ErrorMessage = errorMessage;
             Status = status;
         }
 

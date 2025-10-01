@@ -19,5 +19,20 @@ namespace Byway.API.Controllers
                 error = result.ErrorMessage
             });
         }
+        protected IActionResult HandleResult(Result result)
+        {
+
+            if (result.IsSuccess)
+            {
+                return Ok(new { success = true, data = true });
+            }
+
+            return StatusCode(result.Status ?? 400, new
+            {
+                success = false,
+                error = result.ErrorMessage
+            });
+
+        }
     }
 }
